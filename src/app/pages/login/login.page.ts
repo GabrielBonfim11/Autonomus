@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   public logo: string;
   public userLogin: User = {};
   private loading: any;
-
+  
   constructor(private navCtrl: NavController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
@@ -36,9 +36,18 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
 
     try {
-      await this.authService.login(this.userLogin);
-      this.navCtrl.navigateRoot('home').then(() => {
-        this.menu.swipeEnable(true);
+      await this.authService.loginFirebase(this.userLogin).then((uid) => {
+        if (typeof uid == "string") {
+          this.authService.getUser(uid).subscribe((user) => {
+            if (user.categoria) {
+              this.navCtrl.navigateRoot('/home-profissional');
+            } else {
+              this.navCtrl.navigateRoot('/home-cliente');
+            }
+          })
+        } else {
+          this.presentToast('erro desconhecido');
+        }
       });
     } catch (error) {
       this.presentToast('email ou senha incorretos');

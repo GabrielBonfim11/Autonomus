@@ -42,24 +42,14 @@ export class CadastroClientePage implements OnInit {
     this.tipo = event.target.value;
   }
 
-  async login() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.login(this.userLogin);
-    } catch (error) {
-      this.presentToast('Email ou Senha Incorretos');
-    } finally {
-      this.loading.dismiss();
-    }
-  }
-
   async register() {
     await this.presentLoading();
 
     try {
       await this.authService.register(this.userRegister).then((angularAuth) => {
-        this.authService.cadastraUsuario(angularAuth.user.uid, this.userRegister);
+        this.authService.cadastraUsuario(angularAuth.user.uid, this.userRegister).then(() => {
+          this.presentToast("Cadastrado com successo!");
+        })
       });
     } catch (error) {
       this.presentToast('Cadastro Inválido! Verifique os dados e tente novamente');

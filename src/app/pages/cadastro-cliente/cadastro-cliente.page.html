@@ -40,7 +40,7 @@
         <ion-item>
             <ion-label color="light">Selecione a categoria</ion-label>
             <ion-select placeholder="Selecione..." (ionChange)="selecionaCategoria($event)">
-                <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id" color="light">{{ categoria.nome }}</ion-select-option>
+                <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.nome" color="light">{{ categoria.nome }}</ion-select-option>
             </ion-select>
         </ion-item>
     </div>

@@ -6,11 +6,11 @@
 
         <ion-item color="danger">
           <ion-avatar slot="end">
-            <img src="./avatar.svg">
+            <img [src]="img">
           </ion-avatar>
           <ion-label>
-            <h3>Gabriel Bonfim</h3>
-            <p>dolor sit amet</p>
+            <h3>{{ user.nome }}</h3>
+            <p>{{ user.email }}</p>
           </ion-label>
         </ion-item>
 

@@ -5,12 +5,13 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate: [AuthGuard] },
-  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoginGuard]},
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule'},
   { path: 'cadastro-cliente', loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule' },
   { path: 'lista', loadChildren: './pages/lista/lista.module#ListaPageModule' },
   { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
   { path: 'chat', loadChildren: './pages/chat/chat.module#ChatPageModule' },
+  { path: 'home-profissional', loadChildren: './pages/home-profissional/home-profissional.module#HomeProfissionalPageModule' },
+  { path: 'home-cliente', loadChildren: './pages/home-cliente/home-cliente.module#HomeClientePageModule' },
 ];
 
 @NgModule({

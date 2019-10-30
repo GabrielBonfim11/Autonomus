@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar color="danger">
+
     <ion-title>Nomes</ion-title>
 
     <ion-buttons slot="start">
@@ -11,44 +12,17 @@
 
 <ion-content>
 
-  <ion-item (click)="perfil()">
+  <ion-item (click)="perfil()" *ngFor="let profissional of profissionais">
     <ion-avatar slot="start">
-      <img src="./avatar.svg">
+      <img src="https://i.pravatar.cc/300">
     </ion-avatar>
     <ion-label>
-      <h3>Gabriel Bonfim</h3>
-      <p>testando o app</p>
+      <h3>{{ profissional.nome }}</h3>
+      <p>{{ profissional.descricao }}</p>
     </ion-label>
   </ion-item>
-
-  <ion-item>
-    <ion-avatar slot="start">
-      <img src="./avatar.svg">
-    </ion-avatar>
-    <ion-label>
-      <h3>Karlotinha</h3>
-      <p>mais um teste</p>
-    </ion-label>
-  </ion-item>
-
-  <ion-item>
-    <ion-avatar slot="start">
-      <img src="./avatar.svg">
-    </ion-avatar>
-    <ion-label>
-      <h3>Aline MERCEDES</h3>
-      <p>Dona de uma montadora de carros</p>
-    </ion-label>
-  </ion-item>
-  
-  <ion-item>
-    <ion-avatar slot="start">
-      <img src="./avatar.svg">
-    </ion-avatar>
-    <ion-label>
-      <h3>Baiano</h3>
-      <p>Só um mongoloide</p>
-    </ion-label>
+  <ion-item *ngIf="profissionais">
+      <h4>Nenhum proffisional</h4>
   </ion-item>
 
 </ion-content>
